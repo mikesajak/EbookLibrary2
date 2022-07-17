@@ -1,0 +1,35 @@
+micronaut:
+  application:
+    name: ebookLibrary
+
+netty:
+  default:
+    allocator:
+      max-order: 3
+
+jpa:
+  default:
+    entity-scan:
+      packages:
+        - 'com.mikesajak.library.db.jpa'
+    properties:
+      hibernate:
+        bytecode:
+          provider: none
+        hbm2ddl:
+          auto: update
+#        show_sql: true
+
+datasources:
+  default:
+    url: jdbc:h2:file:~/tmp/db/devDb;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
+#    url: jdbc:h2:tcp://localhost:9090/~/test
+    driverClassName: org.h2.Driver
+    username: test
+    password: ''
+    schema-generate: CREATE_DROP
+    dialect: H2
+
+booklibrary:
+  rdf:
+    repository_dir: jena/DB1
